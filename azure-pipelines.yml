@@ -18,8 +18,7 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Execute pipeline'
 
-- script: |
-        python deploy/deploy.py
+- script: python deploy/deploy.py
   env:
     DATABRICKS_HOST: $(DATABRICKS_HOST)
     DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
