@@ -19,10 +19,10 @@ new_cluster_config = """
 existing_cluster_id = '0807-225846-motto493'
 # Path to the notebook with the integration test
 notebook_path = '/test/unittest_model'
-repo_path = '/Repos/databricks-pipeline-test'
+repo_path = '/Repos/rob.kitaoka@databricks.com/databricks-pipeline-test'
 
 
-repos_path_prefix='/Repos/databricks-pipeline-test'
+repos_path_prefix='/Repos/rob.kitaoka@databricks.com/databricks-pipeline-test'
 git_url = 'https://github.com/rk-db/test-jar'
 provider = 'gitHub'
 branch = 'main'
