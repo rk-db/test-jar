@@ -1,25 +1,45 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+variables:
+- group: Databricks-environment
 
 trigger:
-- main
+  batch: true
+  branches:
+    include:
+    - '*'
 
-pool:
-  vmImage: ubuntu-latest
+  paths:
+    exclude:
+      - .github/*
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+- stage: onPush
+  jobs:
+  - job: onPushJob
+    pool:
+      vmImage: 'ubuntu-18.04'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Execute pipeline'
+    steps:
+    - script: env | sort
+      displayName: 'Environment / Context'
 
-- script: python deploy/deploy.py
-  env:
-    DATABRICKS_HOST: $(DATABRICKS_HOST)
-    DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
-  displayName: 'Run integration test on Databricks'
+    - task: UsePythonVersion@0
+      displayName: 'Use Python 3.7'
+      inputs:
+        versionSpec: 3.7
+
+    - checkout: self
+      persistCredentials: true
+      clean: true
+      displayName: 'Checkout & Build.Reason: $(Build.Reason) & Build.SourceBranchName: $(Build.SourceBranchName)'
+
+    - script: |
+        python -m pip install --upgrade pip
+        pip install databricks_cli
+      displayName: 'Install dependencies'
+
+    - script: |
+        python deploy/deploy.py  --branch_name $(Build.SourceBranchName) --pr_branch $(System.PullRequest.SourceBranch)
+      env:
+        DATABRICKS_HOST: $(DATABRICKS_HOST)
+        DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
+      displayName: 'Run integration test on Databricks'
