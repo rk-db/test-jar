@@ -40,4 +40,4 @@ stages:
       env:
         DATABRICKS_HOST: $(DATABRICKS_HOST)
         DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
-      displayName: 'Run integration test on Databricks'
+      displayName: 'Run on Databricks'
