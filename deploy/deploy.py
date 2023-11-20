@@ -94,7 +94,7 @@ try:
   # print(run_id)
 
   # Copy file from Repo to workspace
-  with ZipFile('/spark-monitoring_1.0.0.jar.zip') as zObject:
+  with ZipFile('/deploy/spark-monitoring_1.0.0.jar.zip') as zObject:
       zObject.extractall(path='/dbfs/FileStore')
 
   #Wait for the job to complete
