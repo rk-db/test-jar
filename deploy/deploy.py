@@ -111,5 +111,6 @@ try:
   #         break
   #     else:
   #         time.sleep(5)
-# finally:
+finally:
+    print('done')
   # repos_service.delete_repo(id=repo['id'])
