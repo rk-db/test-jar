@@ -100,6 +100,7 @@ try:
   with ZipFile('./deploy/spark-monitoring_1.0.0.jar.zip') as zObject:
       zObject.extractall(path='./deploy/')
   print(os.listdir('./deploy/'))
+  dbutils.fs.mv('./deploy/spark-monitoring_1.0.0.jar', 'dbfs:/FileStore/sm.jar')
 
   #Wait for the job to complete
   # while True:
