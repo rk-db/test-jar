@@ -99,7 +99,7 @@ try:
   print(os.listdir('./deploy/'))
   with ZipFile('./deploy/spark-monitoring_1.0.0.jar.zip') as zObject:
       zObject.extractall(path='./deploy/')
-  print(os.listdir('./deploy/')
+  print(os.listdir('./deploy/'))
 
   #Wait for the job to complete
   # while True:
