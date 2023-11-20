@@ -96,7 +96,7 @@ try:
 
   # Copy file from Repo to workspace
 
-  print(os.getcwd())
+  print(os.listdir('./'))
   with ZipFile('/deploy/spark-monitoring_1.0.0.jar.zip') as zObject:
       zObject.extractall(path='/dbfs/FileStore')
 
