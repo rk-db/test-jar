@@ -101,7 +101,6 @@ try:
       zObject.extractall(path='./deploy/')
   print(os.listdir('./deploy/')
 
-
   #Wait for the job to complete
   # while True:
   #     status = jobs_service.get_run(run_id)
@@ -114,5 +113,5 @@ try:
   #     else:
   #         time.sleep(5)
 finally:
-    print('done')
+  print('done')
   # repos_service.delete_repo(id=repo['id'])
