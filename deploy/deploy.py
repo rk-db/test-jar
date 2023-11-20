@@ -98,7 +98,7 @@ try:
 
   print(os.listdir('./deploy/'))
   with ZipFile('./deploy/spark-monitoring_1.0.0.jar.zip') as zObject:
-      zObject.extractall(path='/dbfs/FileStore')
+      zObject.extractall(path='./')
 
   #Wait for the job to complete
   # while True:
@@ -111,5 +111,5 @@ try:
   #         break
   #     else:
   #         time.sleep(5)
-finally:
-  repos_service.delete_repo(id=repo['id'])
+# finally:
+  # repos_service.delete_repo(id=repo['id'])
