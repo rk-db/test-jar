@@ -68,8 +68,8 @@ repos_service = ReposService(api_client)
 
 # Let's store the path for our new Repo
 _b = branch.replace('/','_')
-# repo_path = f'{repos_path_prefix}_{_b}_{str(datetime.now().microsecond)}'
-repo_path = f'{repos_path_prefix}'
+repo_path = f'{repos_path_prefix}_{_b}_{str(datetime.now().microsecond)}'
+# repo_path = f'{repos_path_prefix}'
 
 print('Checking out the following repo: ', repo_path)
 
