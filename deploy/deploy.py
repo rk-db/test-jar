@@ -54,6 +54,7 @@ from databricks_cli.configure.provider import EnvironmentVariableConfigProvider
 from databricks_cli.sdk import JobsService, ReposService
 
 from zipfile import ZipFile
+import os
 
 # Let's create Databricks CLI API client to be able to interact with Databricks REST API
 config = EnvironmentVariableConfigProvider().get_config()
@@ -94,6 +95,8 @@ try:
   # print(run_id)
 
   # Copy file from Repo to workspace
+
+  print(os.getcwd())
   with ZipFile('/deploy/spark-monitoring_1.0.0.jar.zip') as zObject:
       zObject.extractall(path='/dbfs/FileStore')
 
