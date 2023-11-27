@@ -31,10 +31,8 @@ stages:
       displayName: 'Checkout & Build.Reason: $(Build.Reason) & Build.SourceBranchName: $(Build.SourceBranchName)'
 
     - script: |
-        python -m pip install --upgrade pip
         curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
-        # pip install git+https://github.com/databricks/cli@v0.209.1
-      displayName: 'Install dependencies'
+      displayName: 'Install CLI'
 
     - script: |
         cd deploy
@@ -42,7 +40,6 @@ stages:
         ls
         cd ..
         databricks workspace import-dir deploy /Shared/rob-test 
-        # python deploy/deploy.py  --branch_name $(Build.SourceBranchName) --pr_branch $(System.PullRequest.SourceBranch)
       env:
         DATABRICKS_HOST: $(DATABRICKS_HOST)
         DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
