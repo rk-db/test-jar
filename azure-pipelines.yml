@@ -36,7 +36,10 @@ stages:
       displayName: 'Install dependencies'
 
     - script: |
-        python deploy/deploy.py  --branch_name $(Build.SourceBranchName) --pr_branch $(System.PullRequest.SourceBranch)
+        cd deploy
+        unzip spark-monitoring_1.0.0.jar.zip
+        ls
+        # python deploy/deploy.py  --branch_name $(Build.SourceBranchName) --pr_branch $(System.PullRequest.SourceBranch)
       env:
         DATABRICKS_HOST: $(DATABRICKS_HOST)
         DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
