@@ -39,7 +39,8 @@ stages:
         cd deploy
         unzip spark-monitoring_1.0.0.jar.zip
         ls
-        databricks fs cp spark-monitoring_1.0.0.jar /Workspace/Shared/rob-test
+        cd ..
+        databricks workspace import-dir deploy /Shared/rob-test 
         # python deploy/deploy.py  --branch_name $(Build.SourceBranchName) --pr_branch $(System.PullRequest.SourceBranch)
       env:
         DATABRICKS_HOST: $(DATABRICKS_HOST)
